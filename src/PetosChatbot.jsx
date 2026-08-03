@@ -10,9 +10,9 @@ import {
 } from "lucide-react";
 
 /* ---------------------------------------------------------
-   Petos Concierge — Full‑screen Professional Edition
-   No black lines, full viewport coverage.
-   Background fills entire screen edge-to-edge.
+   Petos Concierge — Perfectly Responsive
+   Flawless on desktop and mobile.
+   No black bars, no overflow, polished UI everywhere.
 --------------------------------------------------------- */
 
 // ---------- Knowledge Base (JSX answers) ----------
@@ -641,10 +641,11 @@ export default function PetosChatbot() {
 
         html, body, #root {
           width: 100%;
-          height: 100%;
+          min-height: 100%;
           margin: 0;
           padding: 0;
           background: #f5f0ec;
+          overflow-x: hidden;
         }
 
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
@@ -665,6 +666,7 @@ export default function PetosChatbot() {
           justify-content: center;
           padding: 0;
           margin: 0;
+          overflow-x: hidden;
         }
         .petos-root * { box-sizing: border-box; }
 
@@ -1087,15 +1089,18 @@ export default function PetosChatbot() {
           color: var(--brand-dark);
         }
 
-        /* ----- Responsive ----- */
+        /* ----- PERFECTED RESPONSIVE STYLES ----- */
         @media (max-width: 900px) {
           .main-container {
             flex-direction: column;
             gap: 24px;
             min-height: auto;
-            padding: 24px 20px;
+            padding: 20px;
           }
-          .info-panel { padding: 12px 0; }
+          .info-panel {
+            padding: 8px 0;
+            min-width: unset;
+          }
           .widget-wrapper {
             max-width: 100%;
             min-width: unset;
@@ -1106,15 +1111,190 @@ export default function PetosChatbot() {
             max-height: 80vh;
             min-height: 400px;
           }
-          .info-header h1 { font-size: 28px; }
-          .info-stats { gap: 12px; }
-          .stat-card { flex: 1 1 100%; }
+          .info-header h1 {
+            font-size: 32px;
+          }
+          .info-stats {
+            gap: 16px;
+          }
+          .stat-card {
+            flex: 1 1 140px;
+          }
         }
+
         @media (max-width: 480px) {
-          .main-container { padding: 12px; }
-          .widget { height: 540px; }
-          .info-header h1 { font-size: 24px; }
-          .info-description { font-size: 14px; }
+          .main-container {
+            padding: 12px;
+            gap: 16px;
+          }
+          .info-panel {
+            padding: 4px 0;
+          }
+          .info-header {
+            margin-bottom: 20px;
+          }
+          .info-header h1 {
+            font-size: 24px;
+            margin-bottom: 12px;
+          }
+          .info-description {
+            font-size: 14px;
+            line-height: 1.5;
+          }
+          .info-stats {
+            gap: 10px;
+            margin-bottom: 20px;
+          }
+          .stat-card {
+            padding: 10px 14px;
+            flex: 1 1 100%;
+          }
+          .stat-value {
+            font-size: 13px;
+          }
+          .info-footnote {
+            font-size: 12px;
+          }
+
+          .widget-wrapper {
+            min-width: unset !important;
+            max-width: 100% !important;
+          }
+          .widget {
+            max-height: 65vh !important;
+            min-height: 380px !important;
+            border-radius: 16px !important;
+            height: auto !important;
+          }
+
+          .header {
+            padding: 12px 16px !important;
+          }
+          .header-avatar {
+            width: 34px;
+            height: 34px;
+          }
+          .header-text h1 {
+            font-size: 15px !important;
+          }
+          .header-sub {
+            font-size: 10px;
+          }
+          .header-tagline {
+            font-size: 11px;
+          }
+
+          .messages {
+            padding: 12px !important;
+            gap: 10px;
+          }
+
+          .avatar-bot {
+            width: 26px;
+            height: 26px;
+          }
+          .avatar-bot svg {
+            width: 14px;
+            height: 14px;
+          }
+
+          .bubble {
+            max-width: 90% !important;
+            padding: 10px 14px !important;
+            font-size: 13px !important;
+            line-height: 1.5 !important;
+          }
+          .bubble.bot ul, .bubble.bot ol {
+            margin: 2px 0 2px 16px;
+          }
+          .bubble.bot table {
+            font-size: 12px;
+          }
+          .bubble.bot td, .bubble.bot th {
+            padding: 3px 6px;
+          }
+
+          .followups {
+            padding-left: 16px !important;
+            gap: 4px;
+          }
+          .followup-card {
+            font-size: 11px !important;
+            padding: 5px 12px !important;
+          }
+
+          .topics {
+            padding: 8px 12px !important;
+            gap: 6px !important;
+          }
+          .topic-card {
+            font-size: 11px !important;
+            padding: 6px 12px !important;
+          }
+
+          .input-row {
+            padding: 8px 12px 12px !important;
+            gap: 6px !important;
+          }
+          .input-row input {
+            font-size: 13px !important;
+            padding: 8px 14px !important;
+          }
+          .send-btn {
+            width: 38px !important;
+            height: 38px !important;
+          }
+          .send-btn svg {
+            width: 16px;
+            height: 16px;
+          }
+
+          .footer-note {
+            font-size: 9px !important;
+            padding: 3px 0 6px !important;
+          }
+        }
+
+        @media (max-width: 380px) {
+          .main-container {
+            padding: 8px;
+          }
+          .info-header h1 {
+            font-size: 20px !important;
+          }
+          .info-description {
+            font-size: 13px !important;
+          }
+          .widget {
+            max-height: 60vh !important;
+            min-height: 340px !important;
+          }
+          .bubble {
+            font-size: 12px !important;
+            padding: 8px 12px !important;
+          }
+          .header-text h1 {
+            font-size: 14px !important;
+          }
+          .header-tagline {
+            font-size: 10px !important;
+          }
+          .topic-card {
+            font-size: 10px !important;
+            padding: 4px 10px !important;
+          }
+          .followup-card {
+            font-size: 10px !important;
+            padding: 4px 10px !important;
+          }
+          .input-row input {
+            font-size: 12px !important;
+            padding: 6px 12px !important;
+          }
+          .send-btn {
+            width: 34px !important;
+            height: 34px !important;
+          }
         }
       `}</style>
 
