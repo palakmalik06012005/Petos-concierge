@@ -7,13 +7,20 @@ import {
   Clock,
   ChevronRight,
   Sparkles,
+  Phone,
+  ExternalLink,
 } from "lucide-react";
 
 /* ---------------------------------------------------------
    Petos Concierge — Perfectly Responsive
    Flawless on desktop and mobile.
    No black bars, no overflow, polished UI everywhere.
+   Added: Clickable website link + WhatsApp Contact button
 --------------------------------------------------------- */
+
+// ---------- Petos Contact Info ----------
+const PETOS_WEBSITE = "https://mypetos.com";
+const PETOS_WHATSAPP = "https://wa.me/919999999999?text=Hi%20Petos%20Team%2C%20I%20have%20a%20question%20about%20my%20pet%20insurance.";
 
 // ---------- Knowledge Base (JSX answers) ----------
 const QUICK_TOPICS = [
@@ -585,7 +592,14 @@ export default function PetosChatbot() {
       <div className="info-header">
         <div className="info-badge">
           <PawPrint size={18} color="#F97316" />
-          <span>Petos Concierge</span>
+          <a
+            href={PETOS_WEBSITE}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="brand-link"
+          >
+            Petos Concierge
+          </a>
         </div>
         <h1>Answers about your Petos Cover, on your terms.</h1>
         <p className="info-description">
@@ -624,6 +638,7 @@ export default function PetosChatbot() {
         <span className="info-footnote">
           <Sparkles size={14} />
           Petos Concierge answers from official Petos info only
+          <ExternalLink size={12} style={{ marginLeft: 4, opacity: 0.5 }} />
         </span>
       </div>
     </div>
@@ -656,6 +671,7 @@ export default function PetosChatbot() {
           --brand-light: #ffedd5;
           --ink: #1e1b1a;
           --shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+          --whatsapp: #25D366;
           font-family: 'Inter', system-ui, -apple-system, sans-serif;
           color: var(--ink);
           width: 100%;
@@ -670,6 +686,56 @@ export default function PetosChatbot() {
         }
         .petos-root * { box-sizing: border-box; }
 
+        /* ----- Brand Links ----- */
+        .brand-link {
+          color: var(--brand-dark);
+          text-decoration: none;
+          transition: opacity 0.2s;
+        }
+        .brand-link:hover {
+          opacity: 0.8;
+          text-decoration: underline;
+        }
+        .brand-link-white {
+          color: white;
+          text-decoration: none;
+          transition: opacity 0.2s;
+          display: inline-flex;
+          align-items: center;
+          gap: 2px;
+        }
+        .brand-link-white:hover {
+          opacity: 0.8;
+          text-decoration: underline;
+        }
+
+        /* ----- WhatsApp Contact Button ----- */
+        .whatsapp-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          background: var(--whatsapp);
+          color: white;
+          padding: 6px 14px;
+          border-radius: 30px;
+          font-size: 12px;
+          font-weight: 600;
+          text-decoration: none;
+          transition: all 0.2s;
+          border: none;
+          cursor: pointer;
+          box-shadow: 0 2px 8px rgba(37, 211, 102, 0.3);
+          flex-shrink: 0;
+        }
+        .whatsapp-btn:hover {
+          transform: scale(1.04);
+          box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4);
+        }
+        .whatsapp-btn:active {
+          transform: scale(0.95);
+        }
+
+        /* ----- Main Container ----- */
         .main-container {
           width: 100%;
           max-width: 1400px;
@@ -705,6 +771,9 @@ export default function PetosChatbot() {
           padding: 6px 16px;
           border-radius: 40px;
           width: fit-content;
+        }
+        .info-badge .brand-link {
+          color: var(--brand-dark);
         }
         .info-header h1 {
           font-size: 38px;
@@ -795,10 +864,10 @@ export default function PetosChatbot() {
           overflow: hidden;
         }
 
-        /* ----- Header ----- */
+        /* ----- Header with WhatsApp Button ----- */
         .header {
           background: linear-gradient(135deg, var(--brand), var(--brand-dark));
-          padding: 16px 20px 12px;
+          padding: 14px 20px 12px;
           display: flex;
           flex-direction: column;
           gap: 2px;
@@ -849,10 +918,17 @@ export default function PetosChatbot() {
         .status-row {
           display: flex;
           align-items: center;
+          justify-content: space-between;
           gap: 6px;
           font-size: 11px;
           opacity: 0.8;
           margin-top: 2px;
+          flex-wrap: wrap;
+        }
+        .status-row .status-left {
+          display: flex;
+          align-items: center;
+          gap: 6px;
         }
         .status-dot {
           width: 7px;
@@ -1083,6 +1159,7 @@ export default function PetosChatbot() {
           gap: 6px;
           color: #7a5c4a;
           flex-shrink: 0;
+          flex-wrap: wrap;
         }
         .footer-note .brand-highlight {
           font-weight: 600;
@@ -1182,6 +1259,20 @@ export default function PetosChatbot() {
           }
           .header-tagline {
             font-size: 11px;
+          }
+
+          .status-row {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 6px;
+          }
+          .whatsapp-btn {
+            font-size: 11px !important;
+            padding: 4px 12px !important;
+          }
+          .whatsapp-btn svg {
+            width: 14px;
+            height: 14px;
           }
 
           .messages {
@@ -1305,7 +1396,7 @@ export default function PetosChatbot() {
         {/* Right Chat Widget */}
         <div className="widget-wrapper">
           <div className="widget">
-            {/* Header */}
+            {/* Header with WhatsApp Contact Button */}
             <div className="header">
               <div className="header-top">
                 <div className="header-avatar">
@@ -1318,13 +1409,35 @@ export default function PetosChatbot() {
                   </h1>
                   <div className="header-sub">PET INSURANCE &amp; WELLNESS · INDIA</div>
                 </div>
+                {/* WhatsApp Contact Button */}
+                <a
+                  href={PETOS_WHATSAPP}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="whatsapp-btn"
+                  aria-label="Contact us on WhatsApp"
+                >
+                  <Phone size={14} />
+                  <span>Contact</span>
+                </a>
               </div>
               <div className="header-tagline">
                 Answers about your Petos Cover, on your terms.
               </div>
               <div className="status-row">
-                <span className="status-dot" />
-                <span>Online · mypetos.com</span>
+                <div className="status-left">
+                  <span className="status-dot" />
+                  <span>Online ·</span>
+                  <a
+                    href={PETOS_WEBSITE}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="brand-link-white"
+                  >
+                    mypetos.com
+                    <ExternalLink size={10} style={{ marginLeft: 2 }} />
+                  </a>
+                </div>
               </div>
             </div>
 
@@ -1445,11 +1558,41 @@ export default function PetosChatbot() {
               </motion.button>
             </div>
 
+            {/* Footer with clickable links */}
             <div className="footer-note">
               <PawPrint size={10} color="#F97316" />
-              <span><span className="brand-highlight">Petos Concierge</span></span>
+              <span>
+                <a
+                  href={PETOS_WEBSITE}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="brand-link"
+                  style={{ fontWeight: 600 }}
+                >
+                  Petos Concierge
+                </a>
+              </span>
               <span style={{ opacity: 0.4 }}>|</span>
-              <span style={{ fontSize: "9px" }}>mypetos.com</span>
+              <a
+                href={PETOS_WEBSITE}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="brand-link"
+                style={{ fontSize: "9px", color: "#888" }}
+              >
+                mypetos.com
+                <ExternalLink size={9} style={{ marginLeft: 2 }} />
+              </a>
+              <span style={{ opacity: 0.3 }}>·</span>
+              <a
+                href={PETOS_WHATSAPP}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="brand-link"
+                style={{ fontSize: "9px", color: "#25D366", fontWeight: 500 }}
+              >
+                📱 WhatsApp
+              </a>
             </div>
           </div>
         </div>
