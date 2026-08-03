@@ -20,7 +20,7 @@ import {
 
 // ---------- Petos Contact Info ----------
 const PETOS_WEBSITE = "https://mypetos.com";
-const PETOS_WHATSAPP = "https://wa.me/919999999999?text=Hi%20Petos%20Team%2C%20I%20have%20a%20question%20about%20my%20pet%20insurance.";
+const PETOS_WHATSAPP = "https://wa.me/+918595555718?text=Hi%20Petos%20Team%2C%20I%20have%20a%20question%20about%20my%20pet%20insurance.";
 
 // ---------- Knowledge Base (JSX answers) ----------
 const QUICK_TOPICS = [
